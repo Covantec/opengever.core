@@ -1,4 +1,5 @@
 recursive-include opengever *
+recursive-include plonetheme *
 recursive-include docs *
 include *.rst
 include *.txt

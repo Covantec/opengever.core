@@ -1,0 +1,45 @@
+#sub_taskBox,
+#task-responses {
+  [class*="wf-task-state"],
+  [class*="wf-proposal-state"],
+  [class*="wf-forwarding-state"],
+  [class*="wf-meeting-state"] { width: auto; height: auto; }
+  .icon-task-subtask { white-space: normal; }
+}
+
+.actor-label {
+  text-decoration: none;
+  background-image: none;
+  padding: 0;
+
+  &:before {
+    font-family: 'opengever';
+    content: "x";
+    display: inline-block;
+    color: #bababa;
+    font-size: 14px;
+    min-width: 20px;
+  }
+
+  &:hover {
+    &:before {
+      text-decoration: none;
+    }
+  }
+
+  &.actor-user:before {
+    content: $actor;
+  }
+
+  &.actor-team:before {
+    content: $team;
+  }
+
+  &.actor-contact:before {
+    content: $actor;
+  }
+
+  &.actor-inbox:before {
+    content: $inbox;
+  }
+}
