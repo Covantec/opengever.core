@@ -136,6 +136,7 @@ class TestResolveJobs(FunctionalTestCase):
             'journal_pdf_enabled', True, interface=IDossierResolveProperties)
 
         with freeze(datetime(2016, 4, 25)):
+            IDossier(self.dossier).end = datetime(2016, 2, 25)
             api.content.transition(obj=self.dossier,
                                    transition='dossier-transition-resolve')
 
@@ -147,6 +148,8 @@ class TestResolveJobs(FunctionalTestCase):
         self.assertEquals(u'application/pdf',
                           journal_pdf.file.contentType)
         self.assertFalse(journal_pdf.preserved_as_paper)
+
+        self.assertEqual(datetime(2016, 2, 25), journal_pdf.document_date)
 
     def test_journal_pdf_is_only_added_to_main_dossier(self):
         api.portal.set_registry_record(

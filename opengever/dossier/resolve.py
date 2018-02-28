@@ -223,7 +223,8 @@ class StrictDossierResolver(object):
                 self.context, filename, view.get_data(),
                 title=translate(title, context=self.context.REQUEST),
                 content_type='application/pdf',
-                preserved_as_paper=False).execute()
+                preserved_as_paper=False,
+                document_date=IDossier(self.context).end).execute()
 
     def trigger_pdf_conversion(self):
         if not self.get_property('archival_file_conversion_enabled'):
