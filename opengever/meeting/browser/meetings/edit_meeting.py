@@ -8,6 +8,7 @@ from opengever.meeting import require_word_meeting_feature
 from opengever.meeting.browser.meetings.protocol import IMeetingMetadata
 from opengever.meeting.model import Meeting
 from opengever.ogds.base.actor import Actor
+from opengever.ogds.base.utils import get_current_org_unit
 from plone.locking.interfaces import ILockable
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from z3c.form import button
@@ -35,6 +36,7 @@ class EditMeetingView(ModelEditForm):
         If the protocol has been saved we want to return a JSON response.
         """
         super(EditMeetingView, self).__init__(context, request, context.model)
+        self.context.REQUEST.set('client', get_current_org_unit().id())
         self._has_write_conflict = False
         self._is_locked_by_another_user = False
         self._has_successfully_saved = False
