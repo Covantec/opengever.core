@@ -1,8 +1,7 @@
 from ftw.testbrowser import browsing
 from ftw.testbrowser.pages import statusmessages
+from opengever.testing import assets
 from opengever.testing import IntegrationTestCase
-import opengever
-import os
 
 
 class TestSablonTemplateValidation(IntegrationTestCase):
@@ -16,16 +15,11 @@ class TestSablonTemplateValidation(IntegrationTestCase):
             self.templates,
             view='++add++opengever.meeting.sablontemplate',
         )
-        invalid_template_path = os.path.join(
-            os.path.dirname(opengever.testing.assets.__file__),
-            'invalid_sablon_template.docx'
-        )
-        assert os.path.exists(invalid_template_path)
-        with open(invalid_template_path) as sablon_template:
-            browser.fill({
-                'Title': u'Sablonv\xferlage',
-                'File': sablon_template,
-            }).save()
+        sablon_template = assets.load('invalid_sablon_template.docx')
+        browser.fill({
+            'Title': u'Sablonv\xferlage',
+            'File': (sablon_template, 'valid_sablon_template.docx', 'text/plain'),
+        }).save()
         statusmessages.assert_no_error_messages()
 
     @browsing
@@ -35,14 +29,9 @@ class TestSablonTemplateValidation(IntegrationTestCase):
             self.templates,
             view='++add++opengever.meeting.sablontemplate',
         )
-        valid_template_path = os.path.join(
-            os.path.dirname(opengever.testing.assets.__file__),
-            'valid_sablon_template.docx'
-        )
-        assert os.path.exists(valid_template_path)
-        with open(valid_template_path) as sablon_template:
-            browser.fill({
-                'Title': u'Sablonv\xferlage',
-                'File': sablon_template,
-            }).save()
+        sablon_template = assets.load('valid_sablon_template.docx')
+        browser.fill({
+            'Title': u'Sablonv\xferlage',
+            'File': sablon_template,
+        }).save()
         statusmessages.assert_no_error_messages()
