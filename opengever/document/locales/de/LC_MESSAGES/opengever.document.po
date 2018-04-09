@@ -172,7 +172,7 @@ msgstr "PDF-Vorschau"
 #: ./opengever/document/checkout/templates/cancelconfirmation.pt
 #: ./opengever/document/checkout/templates/cancelconfirmationform.pt
 msgid "cancel_checkout_confirmation"
-msgstr "Wollen Sie wirklich den Checkout widerrufen?"
+msgstr "Wollen Sie den Checkout wirklich widerrufen? Bereits gemachte Änderungen am Dokument gehen dabei verloren."
 
 #. Default: "copy of"
 #: ./opengever/document/subscribers.py
