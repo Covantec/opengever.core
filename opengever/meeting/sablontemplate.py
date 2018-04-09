@@ -44,9 +44,9 @@ class SablonTemplate(Document):
     def is_submitted_document(self):
         return False
 
-    def is_invalid_sablon_template(self):
+    def is_valid_sablon_template(self):
         return IAnnotations(self).get(
-            'opengever.meeting.sablon_template_is_invalid',
+            'opengever.meeting.sablon_template_is_valid',
             None)
 
     def as_file(self, path):

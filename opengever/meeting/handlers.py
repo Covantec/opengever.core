@@ -102,5 +102,5 @@ def configure_committee_container_portlets(container, event):
 def validate_sablon_template(obj, event):
     if ISablonTemplate.providedBy(obj) and obj.file is not None:
         IAnnotations(obj)[
-            'opengever.meeting.sablon_template_is_invalid'
-        ] = not sablon_template_is_valid(obj.file)
+            'opengever.meeting.sablon_template_is_valid'
+        ] = sablon_template_is_valid(obj.file)
