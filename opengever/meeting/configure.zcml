@@ -81,7 +81,7 @@
 
   <subscriber
       for="opengever.document.document.IDocumentSchema
-           opengever.document.interfaces.IObjectBeforeCheckInEvent"
+           opengever.document.interfaces.IObjectCheckedInEvent"
       handler=".handlers.validate_sablon_template"
       />
 
