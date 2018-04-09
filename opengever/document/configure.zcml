@@ -12,6 +12,7 @@
   <include package=".behaviors" />
   <include package=".checkout" />
   <include package=".widgets" />
+  <include package=".oneoffixx" />
 
   <!-- vdex vocabularies folder -->
   <vdex:vocabulary directory="vdexvocabs" />
