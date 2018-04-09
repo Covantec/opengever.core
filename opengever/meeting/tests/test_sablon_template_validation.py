@@ -10,7 +10,7 @@ class TestSablonTemplateValidation(IntegrationTestCase):
     features = ('meeting', 'word-meeting')
 
     @browsing
-    def test_invalid_template_is_rejected(self, browser):
+    def test_invalid_template_is_not_rejected(self, browser):
         self.login(self.administrator, browser)
         browser.open(
             self.templates,
@@ -26,8 +26,7 @@ class TestSablonTemplateValidation(IntegrationTestCase):
                 'Title': u'Sablonv\xferlage',
                 'File': sablon_template,
             }).save()
-        self.assertEquals(['There were some errors.'],
-                          statusmessages.error_messages())
+        statusmessages.assert_no_error_messages()
 
     @browsing
     def test_valid_template_is_accepted(self, browser):
