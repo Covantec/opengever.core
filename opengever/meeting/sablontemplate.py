@@ -33,7 +33,6 @@ class ISablonTemplate(IDocumentSchema):
     file = NamedBlobFile(
         title=_(u'label_sablon_template_file', default='File'),
         required=True,
-        constraint=sablon_template_is_valid,
     )
 
 
