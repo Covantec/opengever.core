@@ -18,7 +18,7 @@ class TestSablonTemplateValidation(IntegrationTestCase):
         sablon_template = assets.load('invalid_sablon_template.docx')
         browser.fill({
             'Title': u'Sablonv\xferlage',
-            'File': (sablon_template, 'valid_sablon_template.docx', 'text/plain'),
+            'File': (sablon_template, 'invalid_sablon_template.docx', 'text/plain'),
         }).save()
         statusmessages.assert_no_error_messages()
 
@@ -32,6 +32,6 @@ class TestSablonTemplateValidation(IntegrationTestCase):
         sablon_template = assets.load('valid_sablon_template.docx')
         browser.fill({
             'Title': u'Sablonv\xferlage',
-            'File': sablon_template,
+            'File': (sablon_template, 'valid_sablon_template.docx', 'text/plain'),
         }).save()
         statusmessages.assert_no_error_messages()
