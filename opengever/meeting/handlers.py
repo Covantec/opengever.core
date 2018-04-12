@@ -99,7 +99,7 @@ def configure_committee_container_portlets(container, event):
     block_context_portlet_inheritance(container)
 
 
-def validate_sablon_template(obj, event):
+def validate_template_file(obj, event):
     if obj.file is not None:
         IAnnotations(obj)[
             'opengever.meeting.sablon_template_is_valid'
