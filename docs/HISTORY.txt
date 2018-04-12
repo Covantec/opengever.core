@@ -6,6 +6,7 @@ Changelog
 ---------------------
 
 - Make sure bumblebee checksum gets calculated for docs created via REST API. [lgraf]
+- Break activity details out per paragraph. [Rotonen]
 - Implement bumblebee tooltip backdrop. [Kevin Bieri]
 - Add favorite SQL-Model. [phgross]
 - Change label of "checkout/edit" button to "checkout and edit" [njohner]

@@ -44,7 +44,32 @@ class TestEmailNotification(IntegrationTestCase):
         self.assertEquals('GEVER Task: Test Task', mail.get('Subject'))
 
     @browsing
+    def test_notification_summary_is_split_into_paragraphs(self, browser):
+        self.login(self.dossier_responsible, browser)
+        self.create_task_via_browser(browser)
+        # XXX - not the neatest way to change the setting
+        with self.login(self.regular_user, browser):
+            browser.open(
+                self.portal,
+                view='notification-settings/save',
+                data={
+                    'kind': 'task-commented',
+                    'mail': json.dumps([TASK_RESPONSIBLE_ROLE]),
+                    'badge': json.dumps([]),
+                    'digest': json.dumps([]),
+                    },
+                )
+        # XXX - did not quickly find a neater way to get the task
+        browser.open(Task.query.all()[-1], view='addcommentresponse')
+        browser.fill({'Response': 'Multi\n\nline\ncomment'})
         browser.css('#form-buttons-save').first.click()
+        mails = Mailing(self.portal).get_messages()
+        self.assertEqual(len(mails), 2)
+        raw_mail = mails[-1]
+        self.assertIn('<p>Multi</p>', raw_mail)
+        self.assertIn('<p></p>', raw_mail)
+        self.assertIn('<p>line</p>', raw_mail)
+        self.assertIn('<p>comment</p>', raw_mail)
 
     @browsing
     def test_from_and_to_addresses(self, browser):
