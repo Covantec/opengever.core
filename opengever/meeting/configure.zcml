@@ -56,37 +56,37 @@
       />
 
   <subscriber
-      for="opengever.document.document.IDocumentSchema
+      for="opengever.meeting.sablontemplate.ISablonTemplate
            zope.lifecycleevent.interfaces.IObjectAddedEvent"
       handler=".handlers.validate_sablon_template"
       />
 
   <subscriber
-      for="opengever.document.document.IDocumentSchema
+      for="opengever.meeting.sablontemplate.ISablonTemplate
            zope.lifecycleevent.interfaces.IObjectCreatedEvent"
       handler=".handlers.validate_sablon_template"
       />
 
   <subscriber
-      for="opengever.document.document.IDocumentSchema
+      for="opengever.meeting.sablontemplate.ISablonTemplate
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"
       handler=".handlers.validate_sablon_template"
       />
 
   <subscriber
-      for="opengever.document.document.IDocumentSchema
+      for="opengever.meeting.sablontemplate.ISablonTemplate
            zope.lifecycleevent.interfaces.IObjectMovedEvent"
       handler=".handlers.validate_sablon_template"
       />
 
   <subscriber
-      for="opengever.document.document.IDocumentSchema
+      for="opengever.meeting.sablontemplate.ISablonTemplate
            opengever.document.interfaces.IObjectCheckedInEvent"
       handler=".handlers.validate_sablon_template"
       />
 
   <subscriber
-      for="opengever.document.document.IDocumentSchema
+      for="opengever.meeting.sablontemplate.ISablonTemplate
            opengever.document.interfaces.IObjectRevertedToVersion"
       handler=".handlers.validate_sablon_template"
       />
